@@ -72,7 +72,7 @@ const App = createMaterialBottomTabNavigator({
   Beranda: {
     screen: BerandaTop,
     navigationOptions: {
-      title: "Home",
+      title: "Beranda",
       tabBarIcon: ({ tintColor }) => (
         <Icon style={{ color: tintColor, fontSize: 25 }} type="Octicons" name="home" />
       )
@@ -81,7 +81,7 @@ const App = createMaterialBottomTabNavigator({
   Feed: {
     screen: Feed,
     navigationOptions: {
-      title: "Feed",
+      title: "Umpan",
       tabBarIcon: ({ tintColor }) => (
       <Icon style={{ color: tintColor, fontSize: 25 }} name='subtitles' type="MaterialIcons" />
       )
@@ -90,16 +90,16 @@ const App = createMaterialBottomTabNavigator({
   Kids: {
     screen: Kids,
     navigationOptions: {
-      title: "Kids",
+      title: "Notif",
       tabBarIcon: ({ tintColor }) => (
-        <Icon style={{ color: tintColor, fontSize: 24 }} type="Octicons" name="octoface" />
+        <Icon style={{ color: tintColor, fontSize: 24 }} type="Ionicons" name="md-notifications" />
       )
     }
   },
   Others: {
     screen: Others,
     navigationOptions: {
-      title: "More",
+      title: "Lainnya",
       tabBarIcon: ({ tintColor }) => (
         <Icon style={{ color: tintColor, fontSize: 25 }} type="MaterialCommunityIcons" name="menu" />
       )
@@ -142,9 +142,9 @@ const RootNavigator = createStackNavigator({
         backgroundColor: '#000',
       },
       headerTitle: <Image 
-      source={{uri:'https://fontmeme.com/permalink/181218/ee8f475c180be9f61ff15b7e52e3225e.png'}}
+      source={{uri:'https://fontmeme.com/permalink/181218/ef64f5b5cda981cf1fed04d965632a08.png'}}
       resizeMode="cover"
-      style={{ width:'50%',height:'100%',marginLeft:40,justifyContent:"center",alignContent:'center',alignSelf:'center'}}
+      style={{width:100,height:'100%',maxWidth:'100%'}} 
       />
     },
   },
@@ -155,19 +155,20 @@ const RootNavigator = createStackNavigator({
         backgroundColor: '#000',
       },
       headerTitle: <Image 
-      source={{uri:'https://fontmeme.com/permalink/181218/ee8f475c180be9f61ff15b7e52e3225e.png'}}
+      source={{uri:'https://fontmeme.com/permalink/181218/ef64f5b5cda981cf1fed04d965632a08.png'}}
       resizeMode="cover"
-      style={{ width:'50%',height:'100%',marginLeft:40,justifyContent:"center",alignContent:'center',alignSelf:'center'}}
+      style={{width:100,height:'100%',maxWidth:'100%'}} 
       />
     },
   },
-  Welcome: {
-    screen: Welcome,  
-  },
+ 
   Search: {
     screen: Search,
     navigationOptions: {
       headerTitle: <Input placeholder="Search" />,
+  },
+  Welcome: {
+    screen: Welcome,  
   },
 }
 });

@@ -21,7 +21,7 @@ export default class Film extends Component {
   }
 
   componentDidMount() {
-    // this.makeRemoteRequest()
+    this.makeRemoteRequest()
   }
   makeRemoteRequest = () => {
     const { page, limit } = this.state
@@ -59,23 +59,19 @@ export default class Film extends Component {
     return (
       <ParallaxScrollView
         backgroundColor="#000"
-        contentBackgroundColor="#f5f5f5"
+        contentBackgroundColor="#0e0e0e"
         fadeOutForeground={true}
-        parallaxHeaderHeight={350}
+        outputScaleValue={20}
+        parallaxHeaderHeight={300}
         renderForeground={() => (
           <ImageSlider
             autoPlayWithInterval={3000}
             loop={true}
             images={[
-              'https://ganol.si/wp-content/uploads/2018/09/The-First-Purge-2018-BluRay-251x323.jpg',
-              'https://ganol.si/wp-content/uploads/2018/09/Sicario-Day-of-the-Soldado-2018-BluRay-255x323.jpg',
-              'https://ganol.si/wp-content/uploads/2018/09/Jurassic-World-Fallen-Kingdom-2018-BluRay-251x323.jpg',
-              'https://ganol.si/wp-content/uploads/2018/09/Hotel-Transylvania-3-Summer-Vacation-2018-BluRay-256x323.jpg',
-              'https://ganol.si/wp-content/uploads/2018/07/Mamma-Mia-Here-We-Go-Again-2018-204x323.jpg',
-              'https://ganol.si/wp-content/uploads/2018/09/Skyscraper-2018-BluRay-251x323.jpg',
-              'https://iflix-images.akamaized.net/5c162114e4b0d897abc0fef5_l_carousel-landscape_s_3000x2250?jpeg[quality]=50&amp;jpeg[chromaSubsampling]=4:4:4&amp;transform=true&amp;resize[]=1440%22%3E',
-              'https://iflix-images.akamaized.net/5c162114e4b0d897abc0fef6_l_carousel-landscape_s_3000x2250?jpeg[quality]=50&amp;jpeg[chromaSubsampling]=4:4:4&amp;transform=true&amp;resize[]=1440%22%3E',
-              'https://iflix-images.akamaized.net/5c162114e4b0d897abc0fef7_l_carousel-portrait_s_2250x3000?jpeg[quality]=50&jpeg[chromaSubsampling]=4:4:4&transform=true&resize[]=1440',
+              'http://digitalspyuk.cdnds.net/12/31/980x490/landscape_movies_looper_poster_1.jpg',
+              'https://infinityreads03.files.wordpress.com/2014/04/divergent-movie-poster-wallpaper-1920x1200.jpg?w=797&h=356',
+              'https://d2kektcjb0ajja.cloudfront.net/images/posts/feature_images/000/000/072/large-1466557422-feature.jpg?1466557422'
+
             ]} />
         )}>
         <View>
@@ -106,12 +102,12 @@ export default class Film extends Component {
                         source={{ uri: item.thumbnails }}
                         style={{ width: 100, height: 135 }}
                       />
-                      <Text numberOfLines={1} style={{ fontSize: 10, color: 'grey' }}>{item.title.split(' (')[0]}</Text>
+                      <Text numberOfLines={1} style={{ fontSize: 10, }}>{item.title.split(' Sub')[0].replace('Nonton', '')}</Text>
                     </View>
                   </TouchableOpacity>
                 }
               /> : <ActivityIndicator size="large" color="#00ff00" />}
-            <Text style={{ marginLeft: 8, marginBottom: 8, marginTop: 10, fontSize: 13 }}>Film Terpopuler</Text>
+            <Text style={{ marginLeft: 8, marginBottom: 8, marginTop: 10, fontSize: 13,color: '#fff' }}>Film Terpopuler</Text>
             {this.state.data !== null ?
               <FlatList
                 data={this.state.data.data}
@@ -137,12 +133,12 @@ export default class Film extends Component {
                         source={{ uri: item.thumbnails }}
                         style={{ width: 100, height: 135 }}
                       />
-                      <Text numberOfLines={1} style={{ fontSize: 10, color: 'grey' }}>{item.title.split(' (')[0]}</Text>
+                      <Text numberOfLines={1} style={{ fontSize: 10, }}>{item.title.split(' Sub')[0].replace('Nonton', '')}</Text>
                     </View>
                   </TouchableOpacity>
                 }
               /> : <ActivityIndicator size="large" color="#00ff00" />}
-            <Text style={{ marginLeft: 8, marginBottom: 8, marginTop: 10, fontSize: 13 }}>Box Office</Text>
+            <Text style={{ marginLeft: 8, marginBottom: 8, marginTop: 10, fontSize: 13,color: '#fff' }}>Box Office</Text>
             {this.state.data !== null ?
               <FlatList
                 data={this.state.data.data}
@@ -168,12 +164,12 @@ export default class Film extends Component {
                         source={{ uri: item.thumbnails }}
                         style={{ width: 100, height: 135 }}
                       />
-                      <Text numberOfLines={1} style={{ fontSize: 10, color: 'grey' }}>{item.title.split(' (')[0]}</Text>
+                      <Text numberOfLines={1} style={{ fontSize: 10, }}>{item.title.split(' Sub')[0].replace('Nonton', '')}</Text>
                     </View>
                   </TouchableOpacity>
                 }
               /> : <ActivityIndicator size="large" color="#00ff00" />}
-            <Text style={{ marginLeft: 8, marginBottom: 8, marginTop: 10, fontSize: 13 }}>Tv Series</Text>
+            <Text style={{ marginLeft: 8, marginBottom: 8, marginTop: 10, fontSize: 13,color: '#fff' }}>Tv Series</Text>
             {this.state.data !== null ?
               <FlatList
                 data={this.state.data.data}
@@ -199,12 +195,12 @@ export default class Film extends Component {
                         source={{ uri: item.thumbnails }}
                         style={{ width: 100, height: 135 }}
                       />
-                      <Text numberOfLines={1} style={{ fontSize: 10, color: 'grey' }}>{item.title.split(' (')[0]}</Text>
+                      <Text numberOfLines={1} style={{ fontSize: 10, }}>{item.title.split(' Sub')[0].replace('Nonton', '')}</Text>
                     </View>
                   </TouchableOpacity>
                 }
               /> : <ActivityIndicator size="large" color="#00ff00" />}
-            <Text style={{ marginLeft: 8, marginBottom: 8, marginTop: 10, fontSize: 13 }}>Anime</Text>
+            <Text style={{ marginLeft: 8, marginBottom: 8, marginTop: 10, fontSize: 13,color: '#fff' }}>Anime</Text>
             {this.state.data !== null ?
               <FlatList
                 data={this.state.data.data}
@@ -230,7 +226,7 @@ export default class Film extends Component {
                         source={{ uri: item.thumbnails }}
                         style={{ width: 100, height: 135 }}
                       />
-                      <Text numberOfLines={1} style={{ fontSize: 10, color: 'grey' }}>{item.title.split(' (')[0]}</Text>
+                      <Text numberOfLines={1} style={{ fontSize: 10, }}>{item.title.split(' Sub')[0].replace('Nonton', '')}</Text>
                     </View>
                   </TouchableOpacity>
                 }
