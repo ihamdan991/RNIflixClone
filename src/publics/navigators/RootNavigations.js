@@ -49,7 +49,7 @@ const BerandaTop = createMaterialTopTabNavigator({
       fontSize: 15,
       scrollEnabled : true,
       style: {
-        backgroundColor: "black",
+        backgroundColor: "#0e0e0e",
       },
       indicatorStyle: {
         backgroundColor: "red"
@@ -109,7 +109,7 @@ const App = createMaterialBottomTabNavigator({
     initialRouteName: 'Beranda',
     activeColor: 'red',
     inactiveColor: 'white',
-    barStyle: { backgroundColor: 'black',height:55 },
+    barStyle: { backgroundColor: '#0e0e0e',height:55 },
   });
 
 const RootNavigator = createStackNavigator({

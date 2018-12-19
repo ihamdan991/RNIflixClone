@@ -13,7 +13,7 @@ class Welcome extends Component {
   render() {
     return (
             <Container>
-                <Header style={{ backgroundColor: "#000"}} androidStatusBarColor="black">
+                <Header style={{ backgroundColor: "#000"}} androidStatusBarColor="#0e0e0e">
                     <Body>
                         <Image source={{ uri: 'https://fontmeme.com/permalink/181218/ef64f5b5cda981cf1fed04d965632a08.png' }}
                             resizeMode="cover"
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',//TODO: Importate para que la imagen abarque toda la pantalla
-        backgroundColor : 'black',
+        backgroundColor : '#0e0e0e',
         width: '100%',
         height: '100%'
       },

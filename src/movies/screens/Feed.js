@@ -10,8 +10,8 @@ import {
 import { Icon } from 'native-base';
 class Video extends Component {
     render() {
-        return <View style={{ backgroundColor: "white" }}>
-            <Image source={{ uri: "https://ganol.si/wp-content/uploads/2018/11/BlacKkKlansman-2018-BluRay-251x323.jpg" }} style={{ height: 200 }} />
+        return <View style={{ backgroundColor: "#0e0e0e" }}>
+            <Image source={{ uri: "https://ganol.si/wp-content/uploads/2018/11/#0e0e0ekKlansman-2018-BluRay-251x323.jpg" }} style={{ height: 200 }} />
 
             <ScrollView style={{ marginTop: 15, marginHorizontal: 15 }} showsVerticalScrollIndicator={false}>
               <View style={{ flexDirection: "row", alignItems: "flex-start" }}>
@@ -20,7 +20,7 @@ class Video extends Component {
                 >
                   
                 </Text>
-                <Icon name="arrow-up" size={27} color="black" style={{ marginLeft: 15 }} />
+                <Icon name="arrow-up" size={27} color="#0e0e0e" style={{ marginLeft: 15 }} />
               </View>
 
               <Text style={{ marginTop: 5 }}>

@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import { Header, Text, Left, Body, Right, Button, Icon, Thumbnail, Content, Container } from 'native-base';
-import { TouchableOpacity, ImageBackground, Dimensions, Image, View } from 'react-native';
+import { Header, Text, Left, Body, Right, Button, Icon, Thumbnail, Content, Container, Spinner } from 'native-base';
+import { TouchableOpacity, ImageBackground, Dimensions, Image, View, Share } from 'react-native';
 
 export default class MovieInfo extends Component {
     constructor() {
         super();
         this.state = {
-            width: Dimensions.get('window').width,
-            height: Dimensions.get('window').height,
             data: null
         }
     }
@@ -26,74 +24,87 @@ export default class MovieInfo extends Component {
                 await this.setState({
                     data: res.data
                 })
-                console.warm(this.state.data)
             })
             .catch(error => {
                 this.setState({ error, loading: false, refreshing: false })
             });
     }
+
+    handleShare = (title,link) => {
+        Share.share({
+            message: 'Ayo nonton film '+title+' gratis di '+link,
+            url: link,
+            title: 'ELANG 4'
+        }, {
+                // Android only:
+                dialogTitle: 'Bagikan film '+ title,
+                // iOS only:
+                excludedActivityTypes: [
+                    'com.apple.UIKit.activity.PostToTwitter'
+                ]
+            })
+    }
     render() {
         return (
             <Container>
-                <ImageBackground
-                    source={{ uri: 'https://ganol.si/wp-content/uploads/2018/12/Spider-Man-Into-the-Spider-Verse-2018-218x323.jpg' }}
-                    style={{ width: '100%', height: '100%', filter: 'blur' }}
-                    blurRadius={3}
-                >
-                    <Header
-                        transparent
-                        androidStatusBarColor="#d1d1d1"
-                        toolbarDefaultBorder="#ffffff"
-                        style={{ zIndex: 1000 }}
+                {this.state.data !== null ?
+                    <ImageBackground
+                        source={{ uri: this.props.navigation.state.params.thumbnails }}
+                        style={{ width: '100%', height: '100%', filter: 'blur' }}
+                        blurRadius={3}
                     >
-                        <Left>
-                            <TouchableOpacity
-                                onPress={()=>this.props.navigation.pop()}
-                            >
-                                <Icon style={{ color: "#fff", fontSize: 25 }} name="chevron-left" type="Feather" />
-                            </TouchableOpacity>
-                        </Left>
-                        <Body />
-                        <Right>
-                            <Button transparent>
-                                <Icon style={{ color: "#fff", fontSize: 25 }} name='cast' type="Feather" />
-                            </Button>
-                            <Button transparent>
-                                <Icon style={{ color: "#fff", fontSize: 25 }} name='search' type="Feather" />
-                            </Button>
-                        </Right>
-                    </Header>
-                    <Content>
-                        <View>
-                            <Body>
-                                <Text></Text>
-                                
-                                <Image source={{ uri: 'https://ganol.si/wp-content/uploads/2018/12/Spider-Man-Into-the-Spider-Verse-2018-218x323.jpg' }} style={{ width: 218, height: 323, }} />
-                                <Text style={{ color: '#fff', fontWeight: 'bold', marginTop: 10 }}>Spider-Man</Text>
-                                <Text style={{ color: '#fff', marginTop: 10 }}>2014 | Action, Adventure, Family | 1 jam 30 menit</Text>
-                                <View style={{ flex: 1, flexDirection: 'row', marginTop: 10 }}>
-                                    <Button style={{ borderRadius: 10, shadowColor: 'none', marginLeft: 8, backgroundColor: 'rgba(255,255,255,0.05)' }}>
-                                        <Icon name="share" />
-                                    </Button>
-                                    <Button style={{ borderRadius: 10, shadowColor: 'none', marginLeft: 8, backgroundColor: 'rgba(255,255,255,0.05)' }}>
-                                        <Icon name="download" type="FontAwesome" />
-                                    </Button>
-                                    <Button style={{ borderRadius: 10, shadowColor: 'none', marginLeft: 8, backgroundColor: 'rgba(255,255,255,0.05)' }}>
-                                        <Icon name="controller-play" type="Entypo" />
-                                    </Button>
-                                </View>
-                                <View
-                                    style={{
-                                        borderBottomColor: 'black',
-                                        borderBottomWidth: 1,
-                                    }}
-                                />
+                        <Header
+                            transparent
+                            androidStatusBarColor="#d1d1d1"
+                            toolbarDefaultBorder="#ffffff"
+                            style={{ zIndex: 1000 }}
+                        >
+                            <Left>
+                                <TouchableOpacity
+                                    onPress={() => this.props.navigation.pop()}
+                                >
+                                    <Icon style={{ color: "#fff", fontSize: 25 }} name="arrow-left" type="MaterialCommunityIcons" />
+                                </TouchableOpacity>
+                            </Left>
+                            <Body />
+                            <Right>
+                                <Button transparent>
+                                    <Icon onPress={() => this.props.navigation.navigate('Search')} style={{ color: "#fff", fontSize: 25 }} name='search' type="Feather" />
+                                </Button>
+                            </Right>
+                        </Header>
+                        <Content>
+                            <View>
+                                <Body>
+                                    <Image backgroundColor='#000' source={{ uri: this.state.data.movies[0].thumbnails }} style={{ width: 218, height: 323, }} />
+                                    <Text style={{ color: '#fff', fontWeight: 'bold', marginTop: 10 }}>{this.state.data.movies[0].title.split(' (')[0]}</Text>
+                                    <Text style={{ color: '#fff', marginTop: 10 }}>{this.state.data.movies[0].release} |  {this.state.data.movies[0].genre}  | 1 jam 30 menit</Text>
+                                    <View style={{ flex: 1, flexDirection: 'row', marginTop: 10 }}>
+                                        <Button 
+                                            onPress={()=>this.handleShare(this.state.data.movies[0].title.split(' (')[0], "http://192.168.0.23/movies/"+this.state.data.movies[0].slug)} 
+                                            style={{ borderRadius: 10, shadowColor: 'none', marginLeft: 8, backgroundColor: 'rgba(255,255,255,0.05)' }}>
+                                            <Icon name="share" />
+                                        </Button>
+                                        <Button style={{ borderRadius: 10, shadowColor: 'none', marginLeft: 8, backgroundColor: 'rgba(255,255,255,0.05)' }}>
+                                            <Icon name="download" type="FontAwesome" />
+                                        </Button>
+                                        <Button style={{ borderRadius: 10, shadowColor: 'none', marginLeft: 8, backgroundColor: 'rgba(255,255,255,0.05)' }}>
+                                            <Icon name="controller-play" type="Entypo" />
+                                        </Button>
+                                    </View>
+                                   
 
-                            </Body>
-                        </View>
+                                </Body>
+                            </View>
 
-                    </Content>
-                </ImageBackground>
+                        </Content>
+                    </ImageBackground>
+                    :
+                    <ImageBackground
+                        source={{ uri: this.props.navigation.state.params.thumbnails }}
+                        style={{ width: '100%', height: '100%', filter: 'blur' }}
+                        blurRadius={3}
+                    ><Spinner /></ImageBackground>}
             </Container>
         );
     }

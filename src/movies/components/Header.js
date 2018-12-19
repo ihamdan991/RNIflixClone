@@ -6,7 +6,7 @@ class Headermovie extends Component {
     render() {
         return (
             
-            <Header style={{ backgroundColor: "black" }} androidStatusBarColor="black">
+            <Header style={{ backgroundColor: "#0e0e0e" }} androidStatusBarColor="#0e0e0e">
                 <Body>
                     <Thumbnail square small source={{uri:'https://fontmeme.com/permalink/181218/ee8f475c180be9f61ff15b7e52e3225e.png'}}
                         style={{height:'100%',width:'70%'}}/>
