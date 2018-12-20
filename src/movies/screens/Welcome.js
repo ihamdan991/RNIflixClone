@@ -1,9 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
-  Container,Header,Text, Body, Right, Button, View
+    Container, Content, Header, Text, Left, Body, Right, Button, Icon, Title, Thumbnail, View
 } from 'native-base';
-import { ImageBackground,StyleSheet,Image,ActivityIndicator} from 'react-native';
+import { ImageBackground, StyleSheet, Image, Dimensions } from 'react-native';
 import { withNavigation } from 'react-navigation';
+
+const { width: width } = Dimensions.get('window');
 
 class Welcome extends Component {
     static navigationOptions = {
@@ -37,6 +39,7 @@ class Welcome extends Component {
         </Container>
     );
   }
+    
 }
 const styles = StyleSheet.create({
     container: {
@@ -44,9 +47,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor : '#0e0e0e',
+        alignItems: 'center',//TODO: Importate para que la imagen abarque toda la pantalla
+        backgroundColor: '#0e0e0e',
         width: '100%',
         height: '100%'
-      },
+    },
     contentContainer: {
       flex : 1,
       paddingTop: 50,

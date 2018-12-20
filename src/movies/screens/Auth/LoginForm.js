@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import {
-   View, Text, TextInput, TouchableOpacity, Alert,Image,
-   StyleSheet ,StatusBar,ImageBackground}
-from 'react-native';
+  View, Text, TextInput, TouchableOpacity, Alert, Image,
+  StyleSheet, StatusBar, ImageBackground
+}
+  from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { 
-  Button,Container,Content,Body ,Form, Item, Input,Label,Icon
+import {
+  Button, Container, Content, Body, Form, Item, Input, Label, Icon
 } from 'native-base';
 
 import { connect } from 'react-redux';
@@ -37,17 +38,17 @@ class LoginForm extends Component {
       .catch(err =>console.log(err));
   }
 
-  static navigationOptions = ({navigation}) => {
+  static navigationOptions = ({ navigation }) => {
     return {
-        headerLeft: (
-            <Icon style={{color: "white",margin: 8}} 
-                name='chevron-thin-left' 
-                type='Entypo' size={8}
-                onPress={() => navigation.goBack()}
-            />
-        )
-      }
-}
+      headerLeft: (
+        <Icon style={{ color: "white", margin: 8 }}
+          name='chevron-thin-left'
+          type='Entypo' size={10}
+          onPress={() => navigation.goBack()}
+        />
+      )
+    }
+  }
 
   render() {
     if (this.state.toHome === true) {
@@ -55,7 +56,7 @@ class LoginForm extends Component {
       navigate('Semua')
     }
     return (
-      
+
       <View style={styles.containers}>
        <ScrollView>
         <View style={styles.loginContainer}>
@@ -93,7 +94,6 @@ class LoginForm extends Component {
         </ScrollView>
         </View>
 
-      
     );
   }
 }
@@ -103,7 +103,8 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginTop: 100
   },
   input: {
     width: 300,
@@ -137,7 +138,7 @@ const styles = StyleSheet.create({
   containers: {
     flex:1,
     backgroundColor: '#0E0E0E',
-  },
+ },
   loginContainer: {
     flexGrow: 1,
     justifyContent: 'flex-end',
@@ -155,6 +156,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     opacity: 0.9
   }
-   
+
 });
-export default connect() (LoginForm);
+export default connect()(LoginForm);

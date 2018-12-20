@@ -70,7 +70,7 @@ export default class Film extends Component {
               'http://digitalspyuk.cdnds.net/12/31/980x490/landscape_movies_looper_poster_1.jpg',
               'https://infinityreads03.files.wordpress.com/2014/04/divergent-movie-poster-wallpaper-1920x1200.jpg?w=797&h=356',
               'https://d2kektcjb0ajja.cloudfront.net/images/posts/feature_images/000/000/072/large-1466557422-feature.jpg?1466557422'
-            ]} />
+          ]} />
         )}>
         <View>
           <View>
@@ -101,11 +101,13 @@ export default class Film extends Component {
                         style={{ width: 100, height: 135 }}
                       />
                       <Text numberOfLines={1} style={{ fontSize: 10 }}>{item.title.split(' (')[0]}</Text>
+                      <Text numberOfLines={1} style={{ fontSize: 10, }}>{item.title.split(' Sub')[0].replace('Nonton', '')}</Text>
                     </View>
                   </TouchableOpacity>
                 }
               /> : <ActivityIndicator size="large" color="#00ff00" />}
             <Text style={{ marginLeft: 8, marginBottom: 8, marginTop: 10, fontSize: 13, color:"#FFF" }}>Film Terpopuler</Text>
+            <Text style={{ marginLeft: 8, marginBottom: 8, marginTop: 10, fontSize: 13,color: '#fff' }}>Film Terpopuler</Text>
             {this.state.data !== null ?
               <FlatList
                 data={this.state.data.data}
@@ -132,11 +134,13 @@ export default class Film extends Component {
                         style={{ width: 100, height: 135 }}
                       />
                       <Text numberOfLines={1} style={{ fontSize: 10 }}>{item.title.split(' (')[0]}</Text>
+                      <Text numberOfLines={1} style={{ fontSize: 10, }}>{item.title.split(' Sub')[0].replace('Nonton', '')}</Text>
                     </View>
                   </TouchableOpacity>
                 }
               /> : <ActivityIndicator size="large" color="#00ff00" />}
             <Text style={{ marginLeft: 8, marginBottom: 8, marginTop: 10, fontSize: 13, color:"#FFF" }}>Box Office</Text>
+            <Text style={{ marginLeft: 8, marginBottom: 8, marginTop: 10, fontSize: 13,color: '#fff' }}>Box Office</Text>
             {this.state.data !== null ?
               <FlatList
                 data={this.state.data.data}
@@ -163,11 +167,13 @@ export default class Film extends Component {
                         style={{ width: 100, height: 135 }}
                       />
                       <Text numberOfLines={1} style={{ fontSize: 10 }}>{item.title.split(' (')[0]}</Text>
+                      <Text numberOfLines={1} style={{ fontSize: 10, }}>{item.title.split(' Sub')[0].replace('Nonton', '')}</Text>
                     </View>
                   </TouchableOpacity>
                 }
               /> : <ActivityIndicator size="large" color="#00ff00" />}
             <Text style={{ marginLeft: 8, marginBottom: 8, marginTop: 10, fontSize: 13, color:"#FFF" }}>Tv Series</Text>
+            <Text style={{ marginLeft: 8, marginBottom: 8, marginTop: 10, fontSize: 13,color: '#fff' }}>Tv Series</Text>
             {this.state.data !== null ?
               <FlatList
                 data={this.state.data.data}
@@ -194,11 +200,13 @@ export default class Film extends Component {
                         style={{ width: 100, height: 135 }}
                       />
                       <Text numberOfLines={1} style={{ fontSize: 10 }}>{item.title.split(' (')[0]}</Text>
+                      <Text numberOfLines={1} style={{ fontSize: 10, }}>{item.title.split(' Sub')[0].replace('Nonton', '')}</Text>
                     </View>
                   </TouchableOpacity>
                 }
               /> : <ActivityIndicator size="large" color="#00ff00" />}
             <Text style={{ marginLeft: 8, marginBottom: 8, marginTop: 10, fontSize: 13, color:"#FFF" }}>Anime</Text>
+            <Text style={{ marginLeft: 8, marginBottom: 8, marginTop: 10, fontSize: 13,color: '#fff' }}>Anime</Text>
             {this.state.data !== null ?
               <FlatList
                 data={this.state.data.data}
@@ -225,6 +233,7 @@ export default class Film extends Component {
                         style={{ width: 100, height: 135 }}
                       />
                       <Text numberOfLines={1} style={{ fontSize: 10}}>{item.title.split(' (')[0]}</Text>
+                      <Text numberOfLines={1} style={{ fontSize: 10, }}>{item.title.split(' Sub')[0].replace('Nonton', '')}</Text>
                     </View>
                   </TouchableOpacity>
                 }
