@@ -11,23 +11,30 @@ import {
 import { connect } from 'react-redux';
 import { login } from '../../../publics/redux/actions/auth';
 
-
-const onButtonPress = () => {
-  Alert.alert('Button has been pressed!');
-};
-
 // create a component
 class LoginForm extends Component {
   state = {
-    toHome: false
+    toHome: false,
+    id:'',
+    username:'',
+    password:''
+
   }
 
-  handleLogin = value => {
-    this.props.dispatch(login(value))
+
+  handleLogin = (value) => {
+    const username     =value.username
+    const password =value.password
+    const data = {
+      id :uuidv1(),
+      username :username,
+      password :password
+  }
+    this.props.dispatch(login(data))
       .then(() => {
         this.setState({ toHome: true });
       })
-      .catch(err => alert('Username or password wrong!'));
+      .catch(err =>console.log(err));
   }
 
   static navigationOptions = ({navigation}) => {
@@ -35,7 +42,7 @@ class LoginForm extends Component {
         headerLeft: (
             <Icon style={{color: "white",margin: 8}} 
                 name='chevron-thin-left' 
-                type='Entypo' size={10}
+                type='Entypo' size={8}
                 onPress={() => navigation.goBack()}
             />
         )
@@ -44,39 +51,36 @@ class LoginForm extends Component {
 
   render() {
     if (this.state.toHome === true) {
-      this.props.dispatch({
-        type: 'Navigation/NAVIGATE',
-        routeName: 'Semua'
-      })
+      const { navigate } = this.props.navigation;
+      navigate('Semua')
     }
     return (
       
       <View style={styles.containers}>
-      <ImageBackground
-        source={{ uri: 'https://images.rapgenius.com/92abc49a4468f440d86e3c66541f0a2b.1000x991x1.jpg' }}
-        style={{ width: '100%', height: '100%' }}>
        <ScrollView>
         <View style={styles.loginContainer}>
         </View>
-        <View style={styles.formContainer}>
+        <View>
           <View style={styles.container}>
-            <StatusBar barStyle="light-content" />
             <TextInput style={styles.input}
               autoCapitalize="none"
-              onSubmitEditing={() => this.passwordInput.focus()}
-              autoCorrect={false}
+              autoCorrect={true}
               keyboardType='email-address'
               returnKeyType="next"
-              placeholder='Email'
+              placeholder='Username'
+              onChangeText={(text) => this.setState({username: text})}
+              value={this.state.username}
               placeholderTextColor='rgba(225,225,225,0.7)' />
 
             <TextInput style={styles.input}
-              returnKeyType="go" ref={(input) => this.passwordInput = input}
+              returnKeyType="go"
               placeholder='Password'
+              onChangeText={(text) => this.setState({password: text})} 
+              value={this.state.password}
               placeholderTextColor='rgba(225,225,225,0.7)'
               secureTextEntry />
             {/*   <Button onPress={onButtonPress} title = 'Login' style={styles.loginButton} /> */}
-            <TouchableOpacity style={styles.buttonContainer} onPress={this.handleSubmit}>
+            <TouchableOpacity style={styles.buttonContainer} onPress={() => this.handleLogin()}>
               <Text style={styles.buttonText}>Sign In</Text>
             </TouchableOpacity>
           </View>
@@ -87,7 +91,6 @@ class LoginForm extends Component {
             </View>
         </View>
         </ScrollView>
-        </ImageBackground>
         </View>
 
       
@@ -133,7 +136,7 @@ const styles = StyleSheet.create({
   },
   containers: {
     flex:1,
-    backgroundColor: '#2c3e50',
+    backgroundColor: '#0E0E0E',
   },
   loginContainer: {
     flexGrow: 1,

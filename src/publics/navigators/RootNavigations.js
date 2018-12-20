@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon, Input,Button,Text,Thumbnail } from 'native-base'
-import { View, ScrollView, Animated,Image } from 'react-native';
+import { View, ScrollView, Animated,Image,Dimensions } from 'react-native';
 
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
 
@@ -23,6 +23,8 @@ import MovieInfo from '../../movies/screens/MovieInfo';
 import FirstPage from '../../movies/screens/Auth/LoginForm';
 import Register from '../../movies/screens/Auth/Register';
 import Welcome from '../../movies/screens/Welcome'
+
+const {width:width } = Dimensions.get('window');
 
 const BerandaTop = createMaterialTopTabNavigator({
   Semua: Semua,
@@ -107,13 +109,15 @@ const App = createMaterialBottomTabNavigator({
   }
 }, {
     initialRouteName: 'Beranda',
-    activeColor: 'red',
-    inactiveColor: 'white',
+    activeColor: 'white',
+    inactiveColor: 'grey',
     barStyle: { backgroundColor: '#0e0e0e',height:55 },
   });
 
 const RootNavigator = createStackNavigator({
-  
+  Welcome: {
+    screen: Welcome,  
+  },  
   App: {
     screen: App,
     navigationOptions: {
@@ -139,36 +143,41 @@ const RootNavigator = createStackNavigator({
     screen: FirstPage,
     navigationOptions: {
       headerStyle: {
-        backgroundColor: '#000',
+      backgroundColor:"#0e0e0e",
+      height:60
       },
       headerTitle: <Image 
       source={{uri:'https://fontmeme.com/permalink/181218/ee8f475c180be9f61ff15b7e52e3225e.png'}}
       resizeMode="cover"
-      style={{ width:'50%',height:'100%',marginLeft:40,justifyContent:"center",alignContent:'center',alignSelf:'center'}}
+      style={{width:100,height:'100%',maxWidth:'100%',marginLeft:40,justifyContent:"center",alignContent:'center',alignSelf:'center'}}
       />
     },
   },
+
+
+  
   Register: {
     screen: Register,
     navigationOptions: {
       headerStyle: {
-        backgroundColor: '#000',
+      backgroundColor:"#0e0e0e",
+      height:60
       },
       headerTitle: <Image 
       source={{uri:'https://fontmeme.com/permalink/181218/ee8f475c180be9f61ff15b7e52e3225e.png'}}
       resizeMode="cover"
-      style={{ width:'50%',height:'100%',marginLeft:40,justifyContent:"center",alignContent:'center',alignSelf:'center'}}
+      style={{width:100,height:'100%',maxWidth:'100%',marginLeft:40,justifyContent:"center",alignContent:'center',alignSelf:'center'}}
       />
-    },
-  },
-  Welcome: {
-    screen: Welcome,  
+    }
+    
   },
   Search: {
     screen: Search,
     navigationOptions: {
       headerTitle: <Input placeholder="Search" />,
   },
-}
+},
+ 
+
 });
 export default createAppContainer(RootNavigator);

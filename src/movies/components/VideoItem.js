@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
+ import React, {Component} from 'react';
 import { 
   Container, Content, Card, CardItem,Text, Left, Body, Right, Button, Icon, Title, Thumbnail 
 } from 'native-base';
-import { WebView,ActivityIndicator } from 'react-native';
+import { WebView } from 'react-native';
+
 export default class TV extends Component {
   constructor(props) {
     super(props)

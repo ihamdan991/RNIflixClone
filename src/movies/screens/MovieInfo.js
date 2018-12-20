@@ -63,7 +63,7 @@ export default class MovieInfo extends Component {
                                 <TouchableOpacity
                                     onPress={() => this.props.navigation.pop()}
                                 >
-                                    <Icon style={{ color: "#fff", fontSize: 25 }} name="arrow-left" type="MaterialCommunityIcons" />
+                                    <Icon style={{ color: "#fff", fontSize: 25 }} name='chevron-thin-left' type='Entypo' />
                                 </TouchableOpacity>
                             </Left>
                             <Body />

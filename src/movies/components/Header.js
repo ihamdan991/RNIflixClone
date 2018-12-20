@@ -9,7 +9,7 @@ class Headermovie extends Component {
             <Header style={{ backgroundColor: "#0e0e0e" }} androidStatusBarColor="#0e0e0e">
                 <Body>
                     <Thumbnail square small source={{uri:'https://fontmeme.com/permalink/181218/ee8f475c180be9f61ff15b7e52e3225e.png'}}
-                        style={{height:'100%',width:'70%'}}/>
+                        style={{width:100,height:'100%',maxWidth:'100%'}} />
                 </Body>
                 <Right>
                     <Button transparent onPress={() => this.props.navigation.navigate('Search')}>
